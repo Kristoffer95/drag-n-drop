@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?43758631');
+  src: url('../font/fontello.eot?43758631#iefix') format('embedded-opentype'),
+       url('../font/fontello.woff2?43758631') format('woff2'),
+       url('../font/fontello.woff?43758631') format('woff'),
+       url('../font/fontello.ttf?43758631') format('truetype'),
+       url('../font/fontello.svg?43758631#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?43758631#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-icon-arrow:before { content: '\e800'; } /* '' */
+.icon-icon-attach:before { content: '\e801'; } /* '' */
+.icon-icon-call:before { content: '\e802'; } /* '' */
+.icon-icon-card-fire:before { content: '\e803'; } /* '' */
+.icon-icon-card-money:before { content: '\e804'; } /* '' */
+.icon-icon-card-pin:before { content: '\e805'; } /* '' */
+.icon-icon-conversation:before { content: '\e806'; } /* '' */
+.icon-icon-cross:before { content: '\e807'; } /* '' */
+.icon-icon-desktop:before { content: '\e808'; } /* '' */
+.icon-icon-doc:before { content: '\e809'; } /* '' */
+.icon-icon-email:before { content: '\e80a'; } /* '' */
+.icon-icon-emoji:before { content: '\e80b'; } /* '' */
+.icon-icon-eye:before { content: '\e80c'; } /* '' */
+.icon-icon-eye2:before { content: '\e80d'; } /* '' */
+.icon-icon-facebook:before { content: '\e80e'; } /* '' */
+.icon-icon-facebooksm:before { content: '\e80f'; } /* '' */
+.icon-icon-female:before { content: '\e810'; } /* '' */
+.icon-icon-file:before { content: '\e811'; } /* '' */
+.icon-icon-fire:before { content: '\e812'; } /* '' */
+.icon-icon-g:before { content: '\e813'; } /* '' */
+.icon-icon-gender:before { content: '\e814'; } /* '' */
+.icon-icon-google:before { content: '\e815'; } /* '' */
+.icon-icon-googleplussm:before { content: '\e816'; } /* '' */
+.icon-icon-listing:before { content: '\e817'; } /* '' */
+.icon-icon-male:before { content: '\e818'; } /* '' */
+.icon-icon-mastercard:before { content: '\e819'; } /* '' */
+.icon-icon-messenger:before { content: '\e81a'; } /* '' */
+.icon-icon-mobile:before { content: '\e81b'; } /* '' */
+.icon-icon-money:before { content: '\e81c'; } /* '' */
+.icon-icon-note:before { content: '\e81d'; } /* '' */
+.icon-icon-pdf:before { content: '\e81e'; } /* '' */
+.icon-icon-phone:before { content: '\e81f'; } /* '' */
+.icon-icon-phone2:before { content: '\e820'; } /* '' */
+.icon-icon-pin:before { content: '\e821'; } /* '' */
+.icon-icon-send:before { content: '\e822'; } /* '' */
+.icon-icon-send2:before { content: '\e823'; } /* '' */
+.icon-icon-send3:before { content: '\e824'; } /* '' */
+.icon-icon-send-white:before { content: '\e825'; } /* '' */
+.icon-icon-settings-company:before { content: '\e826'; } /* '' */
+.icon-icon-settings-profile:before { content: '\e827'; } /* '' */
+.icon-icon-sms:before { content: '\e828'; } /* '' */
+.icon-icon-sms2:before { content: '\e829'; } /* '' */
+.icon-icon-social:before { content: '\e82a'; } /* '' */
+.icon-icon-star:before { content: '\e82b'; } /* '' */
+.icon-icon-tablet:before { content: '\e82c'; } /* '' */
+.icon-icon-task:before { content: '\e82d'; } /* '' */
+.icon-icon-twitter:before { content: '\e82e'; } /* '' */
+.icon-icon-twitter2:before { content: '\e82f'; } /* '' */
+.icon-icon-twittersm:before { content: '\e830'; } /* '' */
+.icon-icon-video:before { content: '\e831'; } /* '' */
+.icon-icon-visitors:before { content: '\e832'; } /* '' */
+.icon-icon-add:before { content: '\e833'; } /* '' */
+.icon-icon-a-mail:before { content: '\e834'; } /* '' */
+.icon-icon-a-phone:before { content: '\e835'; } /* '' */
+.icon-icon-a-pin:before { content: '\e836'; } /* '' */
+.icon-icon-appointments:before { content: '\e837'; } /* '' */
+.icon-icon-a-refresh:before { content: '\e838'; } /* '' */
+.icon-icon-a-report:before { content: '\e839'; } /* '' */
