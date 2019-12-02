@@ -53,6 +53,7 @@ export default {
   },
   watch: {},
   computed: {
+    // get right navigation button names
     get_buttonTitles() {
       return this.right
         .map(x => x.group.map(group => group.name )) // get name
