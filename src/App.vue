@@ -22,19 +22,7 @@
 
       <!-- body -->
       <div class="flex-auto relative">
-        <!-- body top -->
-        <div class="w-auto h-16 bg-light-blue flex items-center justify-between px-2">
-          <!-- left -->
-          <div class="w-full h-full bg-blue-300 flex items-center justify-between">
-            <div class="bg-white w-10 h-10 flex justify-center items-center cursor-pointer">
-              <span class="icon-icon-arrow"></span>
-            </div>
-          </div>
-          <!-- right -->
-          <div class="w-full h-full bg-red-300 flex items-center justify-between">
-              <span class="icon-icon-arrow"></span>
-          </div>
-        </div>
+        <options-nav-c></options-nav-c>
       </div>
     </div>
     
@@ -42,9 +30,19 @@
 </template>
 
 <script>
+// fontello
 import './assets/icons/css/fontello.css';
 
+// components
+import optionsNavC from '@/components/optionsNav/optionsNavC'
+
 export default {
-  name: 'sample'
+  name: 'sample',
+  data () {
+    return {}
+  },
+  components: {
+    'options-nav-c' : optionsNavC
+  }
 }
 </script>
