@@ -10,6 +10,9 @@ module.exports = {
       display: ['Gilroy', 'sans-serif'],
       body: ['Graphik', 'sans-serif'],
     },
+    fontSize: {
+      '14': '14px'
+    },
     borderWidth: {
       default: '1px',
       '0': '0',
@@ -20,6 +23,7 @@ module.exports = {
       colors: {
         cyan: '#9cdbff',
         'light-blue': '#ddeefe',
+        'light-grey': '#607179',
       },
       spacing: {
         '96': '24rem',
