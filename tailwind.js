@@ -11,8 +11,11 @@ module.exports = {
       body: ['Graphik', 'sans-serif'],
     },
     fontSize: {
-      '10': '12px',
-      '14': '14px'
+      // rem
+      '875': '.875rem',
+      // px
+      '10px': '10px',
+      '14px': '14px'
     },
     borderWidth: {
       default: '1px',
@@ -22,7 +25,7 @@ module.exports = {
     },
     inset: { // top, right, buttom, left
       '0px': '0px',
-      '40px': '40px',
+      '42px': '42px',
     },
     boxShadow: {
       '1': '0 8px 16px 5px rgba(0,0,0,0.1)',
@@ -32,11 +35,12 @@ module.exports = {
         cyan: '#9cdbff',
         'light-blue': '#ddeefe',
         'light-grey': '#607179',
+        'lighter-grey': '#F2F7FA',
       },
       spacing: { // padding, 
+        // rem
         '96': '24rem',
         '128': '32rem',
-
         // px
         '4px': '4px',
         '8px': '8px',
