@@ -11,6 +11,7 @@ module.exports = {
       body: ['Graphik', 'sans-serif'],
     },
     fontSize: {
+      '10': '12px',
       '14': '14px'
     },
     borderWidth: {
@@ -19,15 +20,27 @@ module.exports = {
       '2': '2px',
       '4': '4px',
     },
+    inset: { // top, right, buttom, left
+      '0px': '0px',
+      '40px': '40px',
+    },
+    boxShadow: {
+      '1': '0 8px 16px 5px rgba(0,0,0,0.1)',
+    },
     extend: {
       colors: {
         cyan: '#9cdbff',
         'light-blue': '#ddeefe',
         'light-grey': '#607179',
       },
-      spacing: {
+      spacing: { // padding, 
         '96': '24rem',
         '128': '32rem',
+
+        // px
+        '4px': '4px',
+        '8px': '8px',
+        '24px': '24px',
       },
       width: {
         // percentage
@@ -40,10 +53,13 @@ module.exports = {
         // pexels
         '1' : '1px',
         // '40': '40px',
-        '70': '70px',
-        }
+        '70px': '70px',
+        '160px': '160px',
+      }
     }
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['focus', 'hover']
+  },
   plugins: []
 }

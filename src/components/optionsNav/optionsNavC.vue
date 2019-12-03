@@ -1,26 +1,22 @@
 <template>
   <!-- body top -->
-  <div class="w-auto h-16 bg-light-blue flex items-center justify-between px-4">
+  <div class="w-auto h-20 bg-light-blue flex items-center justify-between px-4">
     <!-- left -->
-    <div class="w-full h-full bg-blue-200 flex items-center justify-between">
-      <!-- <cmn-button v-for="(data, index) in right[0].group" :key="index" :data="data"></cmn-button> -->
-      <!-- <div v-for="(data, index) in right" :key="index">
-        <div v-for="(inData, inArray, inIndex) in data" :key="inIndex">
-          <div v-for="(innerData, innerIndex) in inData" :key="innerIndex"> 
-            {{innerData}}
-          </div>
+    <div class="w-full h-full flex items-center">
+      <div class="flex h-full items-center justify-between">
+        <div v-for="(data, index) in get_getLeftNav" :key="index" class="flex rounded bg-white " :class="`${index > 0 ? 'ml-4' : ''}`">
+          <span v-for="(inData, inIndex) in data" :key="inIndex" class="">
+            <cmn-button :data="inData"></cmn-button>
+          </span>
         </div>
-      </div> -->
+      </div>
     </div>
 
     <!-- right -->
-    <div class="w-full h-full bg-red-200 flex justify-end">
-      <!-- <span class="icon-icon-arrow "></span> -->
-      <div class="flex w-3/4 h-full items-center justify-between">
-        <div v-for="(data, index) in get_getRightNav" :key="index" class="flex rounded bg-white overflow-hidden">
-          <!-- {{data}} -->
+    <div class="w-full h-full flex justify-end">
+      <div class="flex h-full items-center justify-between">
+        <div v-for="(data, index) in get_getRightNav" :key="index" class="flex rounded bg-white" :class="`${index > 0 ? 'ml-4' : ''}`">
           <span v-for="(inData, inIndex) in data" :key="inIndex" class="">
-            <!-- {{inData.name}} -->
             <cmn-button :data="inData"></cmn-button>
           </span>
         </div>
@@ -34,20 +30,41 @@ export default {
   name: 'optionsNavC',
   data() {
     return {
-      // right nav
-      right: [
+      left: [ // left nav
         {
           group: [
-            { name: 'sections', icon: 'icon-section', list: ["Add Section", "Manage"], click: 'show_dropdown', tooltip: 'sections', left_boarder: false},
-            { name: 'rows', icon: 'burger', list: ["Add Row", "Manage"], click: 'show_dropdown', tooltip: 'rows', left_boarder: false },
-            { name: 'columns', icon: 'columns', column_list: [{ list: [{ breadcrubs: 'section > 2 column row' }, { title: 'left column', icon1: 'write', icon2: 'eye' }, { title: 'right column', icon1: 'write', icon2: 'eye' },] }], click: 'show_modal', tooltip: 'columns', left_boarder: true },
-            { name: 'elements', icon: 'elements', list: ["Add Element", "Manage"], tooltip: 'elements', left_boarder: true }
+            { name: 'back', icon: 'icon-arrow-left', tooltip: 'back', list: [], click: 'click', left_boarder: false, show_name: false },
           ]
         },
         {
           group: [
-            { name: 'preview', icon: 'eye', list: [], click: 'click', left_boarder: false },
-            { name: 'save', icon: 'save', list: [], click: 'click', left_boarder: true }
+            { name: 'desktop', icon: 'icon-desktop', tooltip: 'desktop', list: [], click: 'click', left_boarder: false, show_name: false },
+            { name: 'mobile', icon: 'icon-mobile', tooltip: 'mobile', list: [], click: 'click', left_boarder: true, show_name: false },
+          ]
+        },
+        {
+          group: [
+            { name: 'apps', icon: ' icon-plug', tooltip: 'apps', list: [], click: 'click', left_boarder: false, show_name: false },
+            { name: 'settings', icon: 'icon-setting', tooltip: 'settings', list: ["Integrations", "SEO Meta Data", "Tracking Code", "Custom Code", "Background", "Typography", "General"], click: 'dropdown', left_boarder: true, show_name: true },
+            { name: 'pop up', icon: 'icon-expand', tooltip: 'pop up', list: ["Show Popup", "Edit Settings"], click: 'dropdown', left_boarder: false, show_name: true },
+            { name: 'undo', icon: 'icon-undo', tooltip: 'undo', list: [], click: 'click', left_boarder: true, show_name: false },
+            { name: 'redo', icon: 'icon-redo', tooltip: 'redo', list: [], click: 'click', left_boarder: true, show_name: false },
+          ]
+        },
+      ],
+      right: [ // right nav
+        {
+          group: [
+            { name: 'sections', icon: 'icon-section', tooltip: 'sections', list: ["Add Section", "Manage"], click: 'dropdown', left_boarder: false, show_name: true },
+            { name: 'rows', icon: 'icon-row', tooltip: 'rows', list: ["Add Row", "Manage"], click: 'dropdown', left_boarder: false, show_name: true },
+            { name: 'columns', icon: 'icon-column', tooltip: 'columns', column_list: [{ list: [{ breadcrubs: 'section > 2 column row' }, { title: 'left column', icon1: 'write', icon2: 'eye' }, { title: 'right column', icon1: 'write', icon2: 'eye' },] }], click: 'show_modal', left_boarder: true, show_name: true },
+            { name: 'elements', icon: 'icon-element', tooltip: 'elements', list: ["Add Element", "Manage"], left_boarder: true, show_name: true }
+          ]
+        },
+        {
+          group: [
+            { name: 'preview', icon: 'icon-eye', tooltip: 'preview', list: [], click: 'click', left_boarder: false, show_name: true },
+            { name: 'save', icon: 'icon-disk', tooltip: 'save', list: [], click: 'click', left_boarder: true, show_name: true }
           ]
         }
       ]
@@ -58,6 +75,12 @@ export default {
     // get right navigation button names
     get_getRightNav() {
       return this.right
+        .map(x => x.group.map(group => group )) // get name
+        // .map((x, i) => i) // get index
+    },
+    // get right navigation button names
+    get_getLeftNav() {
+      return this.left
         .map(x => x.group.map(group => group )) // get name
         // .map((x, i) => i) // get index
     }

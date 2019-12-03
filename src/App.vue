@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="flex w-full h-full relative">
     <!-- Right div -->
-    <div class="bg-white w-70 h-screen flex justify-center py-4">
+    <div class="bg-white w-70px h-screen flex justify-center py-4">
       <!-- <div class="w-12 h-12 bg-white rounded-full">
 
       </div> -->
