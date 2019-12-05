@@ -1,7 +1,6 @@
 <template>
   <!-- body top -->
   <div class="w-auto h-20 bg-light-blue flex items-center justify-between px-4">
-    {{right_slide}}
     <!-- left -->
     <div class="w-full h-full flex items-center">
       <div class="flex h-full items-center justify-between">
@@ -35,7 +34,6 @@ export default {
   name: 'optionsNavC',
   data() {
     return {
-      right_slide: false,
       left: [ // left nav
         {
           group: [
@@ -52,7 +50,7 @@ export default {
           group: [
             { name: 'apps', icon: ' icon-plug', tooltip: 'apps', list: [], action: 'click', left_boarder: false, show_name: false },
             { name: 'settings', icon: 'icon-setting', tooltip: 'settings', list: ["Integrations", "SEO Meta Data", "Tracking Code", "Custom Code", "Background", "Typography", "General"], action: 'dropdown', left_boarder: true, show_name: true },
-            { name: 'pop up', icon: 'icon-expand', tooltip: 'pop up', list: ["Show Popup", "Edit Settings"], action: 'dropdown', left_boarder: false, show_name: true },
+            { name: 'pop_up', icon: 'icon-expand', tooltip: 'pop up', list: ["Show Popup", "Edit Settings"], action: 'dropdown', left_boarder: false, show_name: true },
             { name: 'undo', icon: 'icon-undo', tooltip: 'undo', list: [], action: 'click', left_boarder: true, show_name: false },
             { name: 'redo', icon: 'icon-redo', tooltip: 'redo', list: [], action: 'click', left_boarder: true, show_name: false },
           ]
@@ -63,7 +61,7 @@ export default {
           group: [
             { name: 'sections', icon: 'icon-section', tooltip: 'sections', list: ["Add Section", "Manage"], action: 'dropdown', left_boarder: false, show_name: true },
             { name: 'rows', icon: 'icon-row', tooltip: 'rows', list: ["Add Row", "Manage"], action: 'dropdown', left_boarder: false, show_name: true },
-            { name: 'columns', icon: 'icon-column', tooltip: 'columns', list: [], column_list: [{ list: [{ breadcrubs: 'section > 2 column row' }, { title: 'left column', icon1: 'write', icon2: 'eye' }, { title: 'right column', icon1: 'write', icon2: 'eye' },] }], action: 'modal', left_boarder: true, show_name: true },
+            { name: 'columns', icon: 'icon-column', tooltip: 'columns', list: [], column_list: [{ list: [{ breadcrubs: 'section > 2 column row' }, { title: 'left column', icon1: 'write', icon2: 'eye' }, { title: 'right column', icon1: 'write', icon2: 'eye' },] }], action: 'right_modal', left_boarder: true, show_name: true },
             { name: 'elements', icon: 'icon-element', tooltip: 'elements', list: ["Add Element", "Manage"], action: 'dropdown', left_boarder: true, show_name: true }
           ]
         },

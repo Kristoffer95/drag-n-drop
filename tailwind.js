@@ -24,8 +24,10 @@ module.exports = {
       '4': '4px',
     },
     inset: { // top, right, buttom, left
+      '0': '0',
       '0px': '0px',
       '42px': '42px',
+      '80px': '80px',
     },
     boxShadow: {
       '1': '0 8px 16px 5px rgba(0,0,0,0.1)',
@@ -59,6 +61,10 @@ module.exports = {
         // '40': '40px',
         '70px': '70px',
         '160px': '160px',
+        '383px': '383px',
+      },
+      height: {
+        '100_80px': 'calc(100% - 80px)'
       }
     }
   },

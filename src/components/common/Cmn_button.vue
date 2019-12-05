@@ -1,10 +1,10 @@
 <template>
   <div @click="checkAction(data.action, data)" class="bg-white w-auto h-10 pl-2 pr-3 flex justify-center items-center cursor-pointer relative" :class="`${this.data.left_boarder ? 'border-l' : ''}`">
     <i class="text-gray-700 font-medium text-14px" :class="data.icon"></i>
-    <span v-if="data.show_name" class="text-14px font-medium ml-2 text-light-grey">{{data.name | capitalize}}</span>
+    <span v-if="data.show_name" class="text-14px font-medium ml-2 text-light-grey">{{data.name | capitalize | underscore_to_space }}</span>
     <!-- {{typeof data.list}} -->
     <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hide_dropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px">
-      <li class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex">{{inData}}</li>
+      <li class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex" @click="optionClicked(data.name, inData)">{{inData}}</li>
     </div>
 
 
@@ -16,6 +16,7 @@
 
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
+import {mapStateVModel} from 'map-state-vmodel'
 
 export default {
   name: 'cmn_Button',
@@ -27,31 +28,65 @@ export default {
     }
   },
   filters: {
-    capitalize: function (value) {
+    capitalize(value) {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
+    },
+    underscore_to_space(value) {
+      return value.replace(/_/g,' ');
     }
   },
   methods: {
     checkAction(action, data) {
       this[`${action}`](data)
     },
+    optionClicked(button, option) {
+      this[`${button}`](option)
+      // alert(button)
+    },
     dropdown() {
       this.show_dropdown = !this.show_dropdown
     },
-    click() {
-      this.$parent.right_slide = true
-      // FIXME - must show right slide 
+    // Button Click - "METHOD names are ACTION names"
+    click(data) {
+      if(data.name === 'back') alert("working")
+      else alert("not added yet")
     },
-    modal(data) {
-      alert(data.name)
+    right_modal(data) {
+      this.show_rightModal = true
+      this.button_clicked = data.name
     },
+
+    // Left Button Options
+    settings() {
+
+    },
+    pop_up() {
+      
+    },
+
+    // Right Button Options
+    sections(option) {
+      if (option === 'Add Section') alert(option)
+      else alert("not added yet")
+    },
+    rows() {
+      
+    },
+    elements() {
+
+    },
+
+
 
     // clickaway
     hide_dropdown() {
       this.show_dropdown = false
     },
+  },
+  computed: {
+    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked'])
   }
 }
 </script>
