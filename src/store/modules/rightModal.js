@@ -2,7 +2,7 @@ import { createSetters } from 'map-state-vmodel'
 
 // initial state
 const state = {
-  show_rightModal: false,
+  show_rightModal: true,
   button_clicked: ''
 };
 

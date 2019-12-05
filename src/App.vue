@@ -21,13 +21,8 @@
       <div class="flex-auto relative">
         <options-nav-c></options-nav-c>
       </div>
-      <div class="w-383px h-100_80px absolute top-80px right-0 bg-red-500" v-if="this.show_rightModal">
-        <div class="flex flex-col">
-          <span>show_rightModal: {{show_rightModal}}</span>
-          <span>button_clicked: {{button_clicked}}</span>
-        </div>
-      </div>
     </div>
+    <right-modal-c class="absolute transition-500 transition-ease"></right-modal-c>
   </div> 
 </template>
 
@@ -38,8 +33,7 @@ import './assets/icons/css/fontello.css';
 // components
 import optionsNavC from '@/components/optionsNav/optionsNavC'
 
-// vuex
-import {mapStateVModel} from 'map-state-vmodel'
+import rightModalC from '@/components/rightModal/rightModalC'
 
 export default {
   name: 'sample',
@@ -47,10 +41,10 @@ export default {
     return {}
   },
   components: {
-    'options-nav-c' : optionsNavC
+    'options-nav-c' : optionsNavC,
+    'right-modal-c' : rightModalC
   },
   computed: {
-  ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked'])
   },
 }
 </script>

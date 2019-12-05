@@ -27,10 +27,60 @@ module.exports = {
       '0': '0',
       '0px': '0px',
       '42px': '42px',
+      '50px': '50px',
+      'n50px': '-50px',
+      '383px' : '383px',
+      'n433px' : '-433px',
+      '50px': '50px',
       '80px': '80px',
     },
     boxShadow: {
       '1': '0 8px 16px 5px rgba(0,0,0,0.1)',
+    },
+
+    // Transition
+    transitionProperty: { // defaults to these values
+      'none': 'none',
+      'all': 'all',
+      'color': 'color',
+      'bg': 'background-color',
+      'border': 'border-color',
+      'colors': ['color', 'background-color', 'border-color'],
+      'opacity': 'opacity',
+      'transform': 'transform',
+    },
+    transitionDuration: { // defaults to these values
+      'default': '250ms',
+      '0': '0ms',
+      '100': '100ms',
+      '250': '250ms',
+      '500': '500ms',
+      '750': '750ms',
+      '1000': '1000ms',
+    },
+    transitionTimingFunction: { // defaults to these values
+      'default': 'ease',
+      'linear': 'linear',
+      'ease': 'ease',
+      'ease-in': 'ease-in',
+      'ease-out': 'ease-out',
+      'ease-in-out': 'ease-in-out',
+    },
+    transitionDelay: { // defaults to these values
+      'default': '0ms',
+      '0': '0ms',
+      '100': '100ms',
+      '250': '250ms',
+      '500': '500ms',
+      '750': '750ms',
+      '1000': '1000ms',
+    },
+    willChange: { // defaults to these values
+      'auto': 'auto',
+      'scroll': 'scroll-position',
+      'contents': 'contents',
+      'opacity': 'opacity',
+      'transform': 'transform',
     },
     extend: {
       colors: {
@@ -38,6 +88,7 @@ module.exports = {
         'light-blue': '#ddeefe',
         'light-grey': '#607179',
         'lighter-grey': '#F2F7FA',
+        'black-25': 'rgb(0,0,0, 0.25)',
       },
       spacing: { // padding, 
         // rem
@@ -59,17 +110,34 @@ module.exports = {
         // pexels
         '1' : '1px',
         // '40': '40px',
+        '50px': '50px',
         '70px': '70px',
         '160px': '160px',
         '383px': '383px',
       },
       height: {
-        '100_80px': 'calc(100% - 80px)'
+        '100_80px': 'calc(100% - 80px)',
+
+        
+        '1' : '1px',
+        // '40': '40px',
+        '50px': '50px',
+        '70px': '70px',
+        '160px': '160px',
+        '383px': '383px',
       }
     }
   },
   variants: {
-    backgroundColor: ['focus', 'hover']
+    backgroundColor: ['focus', 'hover'],
+
+    transitionProperty: ['responsive'],
+    transitionDuration: ['responsive'],
+    transitionTimingFunction: ['responsive'],
+    transitionDelay: ['responsive'],
+    willChange: ['responsive'],
   },
-  plugins: []
+  plugins: [
+    require('tailwindcss-transitions')(),
+  ]
 }
