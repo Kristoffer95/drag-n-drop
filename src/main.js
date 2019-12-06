@@ -8,6 +8,12 @@ import './components/common' // common components
 
 import '@/assets/css/tailwind.css' // tailwind css
 
+
+
+
+
+
+
 Vue.config.productionTip = false
 
 new Vue({

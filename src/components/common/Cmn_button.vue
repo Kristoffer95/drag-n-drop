@@ -3,7 +3,7 @@
     <i class="text-gray-700 font-medium text-14px" :class="data.icon"></i>
     <span v-if="data.show_name" class="text-14px font-medium ml-2 text-light-grey">{{data.name | capitalize | underscore_to_space }}</span>
     <!-- {{typeof data.list}} -->
-    <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hide_dropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px">
+    <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hideDropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px">
       <li class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex" @click="optionClicked(data.name, inData)">{{inData}}</li>
     </div>
 
@@ -16,7 +16,8 @@
 
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
-import {mapStateVModel} from 'map-state-vmodel'
+import { mapStateVModel } from 'map-state-vmodel'
+import { isObject } from 'util';
 
 export default {
   name: 'cmn_Button',
@@ -53,10 +54,7 @@ export default {
       if(data.name === 'back') alert("working")
       else alert("not added yet")
     },
-    right_modal(data) {
-      this.show_rightModal = true
-      this.button_clicked = data.name
-    },
+    
 
     // Left Button Options
     settings() {
@@ -68,20 +66,23 @@ export default {
 
     // Right Button Options
     sections(option) {
-      if (option === 'Add Section') alert(option)
-      else alert("not added yet")
+      this.right_modal(option)
     },
-    rows() {
-      
+    rows(option) {
+      this.right_modal(option)
     },
-    elements() {
-
+    elements(option) {
+      this.right_modal(option)
     },
 
-
-
+    // Common methods
+    right_modal(data) {
+      this.show_rightModal = true
+      if (isObject(data)) this.button_clicked = data.name
+      else this.button_clicked = data
+    },
     // clickaway
-    hide_dropdown() {
+    hideDropdown() {
       this.show_dropdown = false
     },
   },
