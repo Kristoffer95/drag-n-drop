@@ -4,9 +4,9 @@
     <span v-if="data.show_name" class="text-14px font-medium ml-2 text-light-grey">{{data.name | capitalize | underscore_to_space }}</span>
     <!-- {{typeof data.list}} -->
     <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hideDropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px">
-      <li class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex" @click="optionClicked(data.name, inData)">{{inData}}</li>
+      <li @click="optionClicked(data.name, inData)" class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex">{{inData}}</li>
     </div>
-
+    <!-- {{data.name}} -->
 
     <!-- <div v-if="data.list.length > 0" class="absolute bg-red-500 h-20 w-160 top-40 border-2 border-green-500">
       <li class="list-none" v-for="(data, index) in data.list" :key="index">{{data}}</li>
@@ -25,7 +25,7 @@ export default {
   mixins: [ clickaway ],
   data() {
     return {
-      show_dropdown: false
+      show_dropdown: false,
     }
   },
   filters: {
@@ -41,9 +41,11 @@ export default {
   methods: {
     checkAction(action, data) {
       this[`${action}`](data)
+      // alert(data.name)
+      // alert(action)
     },
     optionClicked(button, option) {
-      this[`${button}`](option)
+      this[`${button}`](option, button)
       // alert(button)
     },
     dropdown() {
@@ -65,21 +67,29 @@ export default {
     },
 
     // Right Button Options
-    sections(option) {
-      this.right_modal(option)
+    sections(option, button) {
+      this.right_modal(option, button)
+      // alert(option)
     },
-    rows(option) {
-      this.right_modal(option)
+    rows(option, button) {
+      this.right_modal(option, button)
     },
-    elements(option) {
-      this.right_modal(option)
+    elements(option, button) {
+      this.right_modal(option, button)
     },
 
     // Common methods
-    right_modal(data) {
+    right_modal(option, button) {
+      // alert(option.name)
+      
+      if (isObject(option)) {                    // IF - button has no dropdown
+        this.button_clicked = option.name;
+        this.option_clicked = ''
+      } else {                                    // ELSE
+        this.button_clicked = button;   // button ex. section
+        this.option_clicked = option;   // option ex. Add Section - "dropdown option"
+      }
       this.show_rightModal = true
-      if (isObject(data)) this.button_clicked = data.name
-      else this.button_clicked = data
     },
     // clickaway
     hideDropdown() {
@@ -87,7 +97,7 @@ export default {
     },
   },
   computed: {
-    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked'])
+    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked'])
   }
 }
 </script>

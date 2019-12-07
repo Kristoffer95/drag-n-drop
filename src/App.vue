@@ -16,17 +16,15 @@
           <div class="w-12 h-12 bg-red-500 rounded-full mx-1" v-for="(data, index) in [0,1,2,3]" :key="index"></div>
         </div>
       </div>
-
+      <!-- {{window._.isEmpty(this.sample)}} -->
       <!-- body -->
       <div class="flex-auto relative">
         <options-nav-c></options-nav-c>
         <div class="w-100 flex flex-col items-center">
-          <span class="w-1200px h-42px rounded bg-light-blue border border-darker-blue flex justify-center items-center mt-30px mb-30px">
-            <button class="bg-white w-150px h-25px text-10px rounded text-blue-500 text-10px font-bold">ADD NEW ROW</button>
-          </span>
           <!-- body section -->
-          <div class="w-full border-5px border-red-500 flex flex-col justify-center items-center">
-            <component :is="data.name" v-for="(data, index) in rows" :key="index"></component>
+          <div class="w-full flex flex-col justify-center items-center">
+            <wp-section></wp-section>
+            <!-- <component :is="data.name" v-for="(data, index) in rows" :key="index"></component> -->
           </div>
         </div>
       </div>
@@ -48,23 +46,21 @@ import rightModalC from '@/components/rightModal/rightModalC'
 import {mapStateVModel} from 'map-state-vmodel'
 
 //row components
-import './components/rows'   
+import './components/wrapperC'   
 
 export default {
   name: 'sample',
   data () {
     return {
+      sample: 5,
       // body data "Rows and Columns inside"
-      rows: [
-        { name: 'row-1-col', columns: 1, columns_data: [{ column_one: [] }] },
-        { name: 'row-2-cols', columns: 2, columns_data: [{ column_one: [] }, { column_two: [] }] },
-        { name: 'row-3-cols', columns: 3, columns_data: [{ column_one: [] }, { column_two: [] }, { column_three: [] }] },
-        { name: 'row-2-cols', columns: 2, columns_data: [{ column_one: [] }, { column_two: [] }] },
+      wrapperSection: [
+        { name: 'row', columns: [] },
       ]
     }
   },
   computed: {
-    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked']),
+    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked', 'clickOn']),
   },
   methods: {
   },

@@ -1,48 +1,61 @@
 <template>
-  <!-- <div class="bg-black-25 transition-100 w-screen h-screen absolute right-0 top-0"> -->
-    <div class="w-383px h-100_80px transition-100 transition-ease absolute top-80px right-0 bg-white pointer-events-auto" :class="this.show_rightModal ? 'right-0px' : 'right-n433px'" >
-      <!-- v-on-clickaway="hide" -->
+    <div class="w-383px h-100_80px transition-100 transition-ease absolute top-80px right-0 bg-white pointer-events-auto" 
+      :class="this.show_rightModal ? 'right-0px' : 'right-n433px'" >
+      
       <div class="w-35px h-35px bg-lighter-blue absolute left-n35px flex justify-center items-center">
         <p class="cursor-pointer" @click="hide">&#10006;</p>
       </div>
+
       <div class="flex flex-col">
-        <div class="w-100 h-49px bg-lighter-blue"></div>
-        <div class="w-100">
-          <column-c v-if="button_clicked === 'columns'"></column-c>
+        <div class="w-full h-49px bg-lighter-blue">
+          <div v-if="clicked_OptionButton" class="w-full h-full flex justify-center items-center">
+            <span class="font-semibold">{{clicked_OptionButton[0].title}}</span>
+          </div>
         </div>
 
-        <!-- <span>show_rightModal: {{show_rightModal}}</span>
-        <span>button_clicked: {{button_clicked}}</span> -->
+        <div class="w-100">
+          <column-c v-if="button_clicked === 'columns'"></column-c>
+          <section-add-c v-if="button_clicked === 'sections' && option_clicked === 'Add Section'"></section-add-c>
+          <section-manage-c v-if="button_clicked === 'sections' && option_clicked === 'Manage'"></section-manage-c>
+          <row-add-c v-if="button_clicked === 'rows' && option_clicked === 'Add Row'"></row-add-c>
+        </div>
       </div>
+
     </div>
-  <!-- </div> -->
 </template>
 
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
 import {mapStateVModel} from 'map-state-vmodel'
 
+// components
+import sectionAddC from './components/sectionAddC'
+import sectionManageC from './components/sectionManageC'
+import rowAddC from './components/rowAddC'
 import columnC from './components/columnC'
 
 export default {
+  mixins: [ clickaway ],
   data() {
     return {}
   },
-  mixins: [ clickaway ],
   computed: {
-  ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked'])
+  ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked', 'clickOn']),
+  clicked_OptionButton() {
+    let result = this.clickOn.filter(val => val.option === `${this.option_clicked}` && val.button === `${this.button_clicked}`)
+    return result
+  },
   },
   components: {
-    'column-c' : columnC
+    'column-c' : columnC,
+    'section-add-c': sectionAddC,
+    'section-manage-c': sectionManageC,
+    'row-add-c': rowAddC
   },
   methods: {
     hide() {
       this.show_rightModal = false
-    }
+    },
   },
 }
 </script>
-
-<style>
-
-</style>
