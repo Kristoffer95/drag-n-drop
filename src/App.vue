@@ -20,10 +20,14 @@
       <!-- body -->
       <div class="flex-auto relative">
         <options-nav-c></options-nav-c>
-        <div class="w-100 flex flex-col items-center p-30px">
-          <span class="w-1200px h-42px rounded bg-light-blue border border-darker-blue flex justify-center items-center">
+        <div class="w-100 flex flex-col items-center">
+          <span class="w-1200px h-42px rounded bg-light-blue border border-darker-blue flex justify-center items-center mt-30px mb-30px">
             <button class="bg-white w-150px h-25px text-10px rounded text-blue-500 text-10px font-bold">ADD NEW ROW</button>
           </span>
+          <!-- body section -->
+          <div class="w-full border-5px border-red-500 flex flex-col justify-center items-center">
+            <component :is="data.name" v-for="(data, index) in rows" :key="index"></component>
+          </div>
         </div>
       </div>
     </div>
@@ -43,24 +47,32 @@ import rightModalC from '@/components/rightModal/rightModalC'
 // vuex
 import {mapStateVModel} from 'map-state-vmodel'
 
+//row components
+import './components/rows'   
+
 export default {
   name: 'sample',
   data () {
     return {
       // body data "Rows and Columns inside"
       rows: [
-        { name: 'row', columns: 2, columns_data: [{ column_one: [] }, { column_two: [] }] },
-        { name: 'row', columns: 1, columns_data: [{ column_one: [] }] },
-        { name: 'row', columns: 3, columns_data: [{ column_one: [] }, { column_two: [] }, { column_three: [] }] },
+        { name: 'row-1-col', columns: 1, columns_data: [{ column_one: [] }] },
+        { name: 'row-2-cols', columns: 2, columns_data: [{ column_one: [] }, { column_two: [] }] },
+        { name: 'row-3-cols', columns: 3, columns_data: [{ column_one: [] }, { column_two: [] }, { column_three: [] }] },
+        { name: 'row-2-cols', columns: 2, columns_data: [{ column_one: [] }, { column_two: [] }] },
       ]
     }
   },
+  computed: {
+    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked']),
+  },
+  methods: {
+  },
   components: {
     'options-nav-c' : optionsNavC,
-    'right-modal-c' : rightModalC
-  },
-  computed: {
-    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked'])
+    'right-modal-c' : rightModalC,
+
+
   },
 }
 </script>
