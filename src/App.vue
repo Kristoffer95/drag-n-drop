@@ -16,6 +16,7 @@
           <div class="w-12 h-12 bg-red-500 rounded-full mx-1" v-for="(data, index) in [0,1,2,3]" :key="index"></div>
         </div>
       </div>
+
       <!-- {{window._.isEmpty(this.sample)}} -->
       <!-- body -->
       <div class="flex-auto relative">

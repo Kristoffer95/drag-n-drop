@@ -6,18 +6,19 @@
         <p class="cursor-pointer" @click="hide">&#10006;</p>
       </div>
 
-      <div class="flex flex-col">
-        <div class="w-full h-49px bg-lighter-blue">
+      <div class="w-full h-full flex flex-col">
+        <div class="w-full h-49px bg-lighter-blue" v-if="clicked_OptionButton[0].title">
           <div v-if="clicked_OptionButton" class="w-full h-full flex justify-center items-center">
             <span class="font-semibold">{{clicked_OptionButton[0].title}}</span>
           </div>
         </div>
 
-        <div class="w-100">
+        <div class="w-full h-full relative">
           <column-c v-if="button_clicked === 'columns'"></column-c>
           <section-add-c v-if="button_clicked === 'sections' && option_clicked === 'Add Section'"></section-add-c>
           <section-manage-c v-if="button_clicked === 'sections' && option_clicked === 'Manage'"></section-manage-c>
           <row-add-c v-if="button_clicked === 'rows' && option_clicked === 'Add Row'"></row-add-c>
+          <element-add-c v-if="button_clicked === 'elements' && option_clicked === 'Add Element'"></element-add-c>
         </div>
       </div>
 
@@ -33,6 +34,7 @@ import sectionAddC from './components/sectionAddC'
 import sectionManageC from './components/sectionManageC'
 import rowAddC from './components/rowAddC'
 import columnC from './components/columnC'
+import elementAddC from './components/elementAddC/elementAddC'
 
 export default {
   mixins: [ clickaway ],
@@ -50,7 +52,8 @@ export default {
     'column-c' : columnC,
     'section-add-c': sectionAddC,
     'section-manage-c': sectionManageC,
-    'row-add-c': rowAddC
+    'row-add-c': rowAddC,
+    'element-add-c' : elementAddC
   },
   methods: {
     hide() {

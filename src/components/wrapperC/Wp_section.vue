@@ -12,7 +12,7 @@ export default {
   name: 'wp-section',
   data() {
     return {
-      hover: true
+      hover: false
     }
   },
   methods: {

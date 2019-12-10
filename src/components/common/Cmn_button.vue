@@ -85,11 +85,14 @@ export default {
       if (isObject(option)) {                    // IF - button has no dropdown
         this.button_clicked = option.name;
         this.option_clicked = ''
+        
+        this.show_rightModal = true
       } else {                                    // ELSE
         this.button_clicked = button;   // button ex. section
         this.option_clicked = option;   // option ex. Add Section - "dropdown option"
+        
+        this.show_rightModal = true
       }
-      this.show_rightModal = true
     },
     // clickaway
     hideDropdown() {

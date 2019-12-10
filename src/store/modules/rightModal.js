@@ -14,8 +14,8 @@ const state = {
     { option: 'Manage', button: 'sections', title: 'Manage Sections' },
     { option: 'Add Row', button: 'rows', title: 'Add Row',},
     { option: 'Manage', button: 'rows', title: 'Manage Rows' },
-    { option: 'Add Element', button: 'element', title: '' },
-    { option: 'Manage', button: 'element', title: 'Manage Element' },
+    { option: 'Add Element', button: 'elements', title: '' },
+    { option: 'Manage', button: 'elements', title: 'Manage Element' },
   ]
 };
 
