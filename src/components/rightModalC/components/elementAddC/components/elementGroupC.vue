@@ -1,11 +1,11 @@
 <template>
   <div class="w-full mb-20px">
-    <!-- {{group_data}} -->
+    <!-- {{group_data.list}} -->
     <div class="w-full mb-10px">
       <span class="text-14px">{{group_data.title | capitalize}}</span>
     </div>
     <div class="w-full flex flex-wrap justify-between ">
-      <div v-for="(data, index) in group_data.list" :key="index"
+      <div v-for="(data, index) in group_data.list" :key="index" @click="addElement(data)"
       class="w-118px h-102px border-2px border-lighter-grey flex flex-col justify-center items-center cursor-pointer"
       :class="[( index > 1 ? 'mt-10px' : '')]">
         <i class="text-30px" :class="data.icon"></i>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import {mapStateVModel} from 'map-state-vmodel'
+
 export default {
   name: 'element-type-c',
   extends: {},
@@ -41,8 +43,16 @@ export default {
     return{};
   },
   watch: {},
-  computed: {},
-  methods: {},
+  computed: {
+    ...mapStateVModel('pageData', ['wpSection']),
+    ...mapStateVModel('rightModal', ['show_rightModal']),
+  },
+  methods: {
+    async addElement(data) {
+      await this.wpSection[0].columns.push(data)
+      this.show_rightModal = await false
+    }
+  },
   components: {},
   created() {},
   beforeCreate(){},
