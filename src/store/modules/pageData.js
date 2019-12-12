@@ -3,9 +3,10 @@ import { createSetters } from 'map-state-vmodel'
 // initial state
 const state = {
   // body data "Rows and Columns inside"
-  wpSection: [
-    // { name: 'row', columns: [] },
-  ]
+  // wpSections: [{ name: 'section', rows: [{ name: 'row', columns: [] }] }],
+  // wpSections: [{ name: 'section', rows: [] }],
+  wpSections: [],
+
 };
 
 // getters

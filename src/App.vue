@@ -12,7 +12,7 @@
       <navigation-c></navigation-c>
 
       <!-- body -->
-      <body-c></body-c>
+      <body-c ></body-c>
     </div>
     <div class="absolute w-screen h-screen bg-black opacity-25" v-if="this.show_rightModal"></div>
     <right-modal-c class="absolute transition-500 transition-ease"></right-modal-c>

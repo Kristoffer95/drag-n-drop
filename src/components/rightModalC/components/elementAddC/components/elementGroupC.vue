@@ -44,12 +44,12 @@ export default {
   },
   watch: {},
   computed: {
-    ...mapStateVModel('pageData', ['wpSection']),
+    ...mapStateVModel('pageData', ['wpSections']),
     ...mapStateVModel('rightModal', ['show_rightModal']),
   },
   methods: {
     async addElement(data) {
-      await this.wpSection[0].columns.push(data)
+      await this.wpSections[0].rows[0].columns.push(data)
       this.show_rightModal = await false
     }
   },
