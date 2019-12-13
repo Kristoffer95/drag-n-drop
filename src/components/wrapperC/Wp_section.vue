@@ -1,17 +1,18 @@
 <template>
   <!-- <div v-if="this.wpSectionEmptys" -->
   <div
-    class="w-full flex flex-col justify-center items-center border-2px" :class="this.hover ? 'border-light-green' : 'border-opaque'"
+    class="w-full flex flex-col justify-center items-center border-2px pt-30px pb-30px" :class="this.hover ? 'border-light-green' : 'border-opaque'"
     @mouseenter="onHover" @mouseleave="onLeaveHover" >
-    <div class="w-1200px h-42px rounded bg-light-blue border border-darker-blue flex justify-center items-center mt-30px mb-30px">
-      <button class="bg-white w-150px h-25px text-10px rounded text-blue-500 text-10px font-bold" @click="addRow">ADD NEW ROW</button>
-      <!-- <button v-if="!this.wpSectionEmptys" class="bg-white w-150px h-25px text-10px rounded text-blue-500 text-10px font-bold" @click="addElement">ADD ELEMENT</button> -->
-    </div>
+
+    <!-- Add New Row -->
+    <cmn-add-new-btn @click.native="addRow" :btn_data="btn_data"></cmn-add-new-btn>
+
     <!-- GET BACK HERE WHEN "SECTION, ROW, COLUMN" DESIGNES ARE DONE -->
     <!-- {{wpSections}} -->
-    <!-- <component :is="row" v-for="(row, index) in row_array" :key="index"></component> -->
-    <component :row_data="row"
-      :is="row.component_name" v-for="(row, index) in wpSections" :key="index">
+    
+    <!-- using the wp-row component -->
+    <component :row_data="row" :index="index"
+      :is="row.component_name" v-for="(row, index) in wpSections" :key="index" >}}
     </component>
     
   </div>
@@ -25,6 +26,7 @@ export default {
   data() {
     return {
       hover: false,
+      btn_data: { value:'add new row', border_color: 'border-darker-blue', bg_color: 'bg-light-blue', btn_onHover_color: 'bg-blue-500' }
     }
   },
   watch: {

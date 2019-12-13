@@ -12,6 +12,7 @@
         <span class="text-12px text-dark-grey">{{ data.name | uppercase}}</span>
       </div>
     </div>
+    {{this.wpSections[0].list[0].element}}
   </div>
 </template>
 
@@ -49,8 +50,9 @@ export default {
   },
   methods: {
     async addElement(data) {
-      await this.wpSections[0].rows[0].columns.push(data)
-      this.show_rightModal = await false
+      // await this.wpSections[0].list[0].element.push(data)
+      // this.show_rightModal = await false
+      await alert(this.wpSections[0].list[0].element.push(data))
     }
   },
   components: {},

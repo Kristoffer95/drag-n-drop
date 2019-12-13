@@ -1,11 +1,8 @@
 <template>
-  <div class="w-100 flex flex-col items-center">
+  <div class="w-full flex flex-col items-center">
     <!-- body section -->
     <div class="w-full flex flex-col justify-center items-center">
       <wp-section></wp-section>
-      <!-- <component :is="data.name" v-for="(data, index) in rows" :key="index"></component> -->
-
-      <!-- <wp-row></wp-row> -->
     </div>
   </div>
 </template>
