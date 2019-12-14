@@ -7,7 +7,7 @@
   <div class="w-full max-w-1200px h-42px rounded border flex justify-center items-center"
     :class="[(btn_data.bg_color ? btn_data.bg_color : ''), (btn_data.border_color ? btn_data.border_color : '')]">
 
-    <button class="bg-white  hover:text-white w-150px h-25px text-11px rounded text-blue-500 text-10px font-bold"
+    <button @click="btn_click" class="bg-white  hover:text-white w-150px h-25px text-11px rounded text-blue-500 text-10px font-bold"
       :class="btn_data.btn_onHover_color ? `hover:${btn_data.btn_onHover_color}` : ''"> {{ btn_data.value | uppercase }} </button>
   </div>
 </template>
@@ -23,7 +23,9 @@ export default {
     }
   },
   data(){
-    return{};
+    return{
+      hover: false
+    };
   },
   filters: {
     
@@ -35,7 +37,11 @@ export default {
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    btn_click() {
+      this.$emit('click_cmn_addNewBtn')
+    }
+  },
   components: {},
   created() {},
   beforeCreate(){},

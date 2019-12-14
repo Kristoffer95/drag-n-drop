@@ -3,22 +3,51 @@ import { createSetters } from 'map-state-vmodel'
 // initial state
 const state = {
   // body data "Rows and Columns inside"
-  // wpSections: [  
+  wpSections: [
+    {
+      name: 'section',
+      row_list: []
+    }
+  ],
+  // wpSections: [
   //   {
-  //     "component_name": "wp-row",
-  //     "title": "1 column",
-  //     "list": [ 
+  //     name: 'section',
+  //     component_name: 'wp-section',
+  //     row_list: [
   //       {
-  //         "name": "columns",
-  //         "element": []
+  //         name: 'row',
+  //         component_name: 'wp-row',
+  //         // rightModal_btn_title: '1 column',
+  //         column_list: [
+  //           {
+  //             name: 'columns',
+  //             element: []
+  //           },
+  //           {
+  //             name: 'columns',
+  //             element: []
+  //           }
+  //         ]
+  //       },
+  //       {
+  //         name: 'row',
+  //         component_name: 'wp-row',
+  //         // rightModal_btn_title: '2 column',
+  //         column_list: [
+  //           {
+  //             name: 'columns',
+  //             element: []
+  //           }
+  //         ]
   //       }
   //     ]
-  //   },
+  //   }
   // ],
-  wpSections: [],
-  clicked_section: '', 
-  clicked_row: '', 
-  clicked_element: '', 
+
+  // updated when a specific "element" of a "row" in a "section" is clicked.
+  clicked_section: 0,
+  clicked_row: 0,
+  clicked_column: 0,
 
 };
 

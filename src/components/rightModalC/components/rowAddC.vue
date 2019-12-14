@@ -28,14 +28,14 @@ export default {
   data(){
     return{
       col_count: [
-        { component_name: 'wp-row', title: '1 column', list:[{ name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: '2 column', list:[{ name: 'columns', element: [] }, { name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: '3 column', list:[{ name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: '4 column', list:[{ name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: '5 column', list:[{ name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: '6 column', list:[{ name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }, { name: 'columns', element: [] }] },
-        { component_name: 'wp-row', title: 'left sidebar' },
-        { component_name: 'wp-row', title: 'right sidebar' },
+        { title: '1 column', list:[{ name: 'column', element_list: [] }] },
+        { title: '2 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }] },
+        { title: '3 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] },
+        { title: '4 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] },
+        { title: '5 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] },
+        { title: '6 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] },
+        { title: 'left sidebar' },
+        { title: 'right sidebar' },
       ]
     };
   },
@@ -47,7 +47,12 @@ export default {
   },
   methods: {
     addRow(data) {
-      this.wpSections.push(data)
+      if(this.wpSections.length === 1) {
+      this.wpSections[0].row_list.push(data.list)
+      }else{
+        // this.wpSections.push(data)
+        alert(this.wpSections.length)
+      }
       this.show_rightModal = false
     }
   },

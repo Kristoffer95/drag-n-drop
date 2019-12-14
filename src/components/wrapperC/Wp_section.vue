@@ -1,33 +1,18 @@
 <template>
   <!-- <div v-if="this.wpSectionEmptys" -->
-  <div class="w-full flex flex-col justify-center items-center ">
+  <div class="w-full flex flex-col justify-center items-center" v-if="wpSections[0].row_list.length > 0">
     <div
-      class="w-full flex flex-col justify-center items-center border-2px pt-30px pb-30px" :class="this.hover ? 'border-light-green' : 'border-opaque'"
+      class="w-full flex flex-col justify-center items-center border-2px bg-lighter-grey pt-30px pb-30px" 
+      :class="[(this.hover ? 'border-light-green' : 'border-opaque')]"
       @mouseenter="onHover" @mouseleave="onLeaveHover" >
-
-      <!-- Add New Row -->
-
+      
       <!-- GET BACK HERE WHEN "SECTION, ROW, COLUMN" DESIGNES ARE DONE -->
-      <!-- <div 
-        v-for="(row, array, index) in section_data" 
-        :key="index" :row_data="row">
-      </div> -->
-
-      <!-- {{section_data}} -->
-      
-      <div class="w-full flex flex-col justify-center items-center">
-        <!-- {{section_data.component_name}} -->
-        <wp-row :row_data="section_data" :index="section_index"></wp-row>
-      </div>
-      <!-- <component :is="section_data.component_name" :row_data="row" :index="index "></component> -->
+            
       <!-- using the wp-row component -->
-      <!-- <component 
-        v-for="(row, index) in wpSections" 
-        :key="index" :row_data="row" 
-        :index="index "
-        :is="row.component_name" >
-      </component> -->
-      
+      <div class="w-full flex flex-col justify-center items-center">
+        <wp-row v-for="(row_data, row_index) in this.section_data.row_list" :key="row_index"
+        :row_data="row_data" :section_index="section_index" :row_index="row_index"></wp-row>
+      </div>
     </div>
   </div>
 </template>

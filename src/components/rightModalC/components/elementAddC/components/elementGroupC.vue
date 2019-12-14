@@ -12,7 +12,7 @@
         <span class="text-12px text-dark-grey">{{ data.name | uppercase}}</span>
       </div>
     </div>
-    {{this.wpSections[0].list[0].element}}
+    <!-- {{this.wpSections}} -->
   </div>
 </template>
 
@@ -45,14 +45,13 @@ export default {
   },
   watch: {},
   computed: {
-    ...mapStateVModel('pageData', ['wpSections']),
     ...mapStateVModel('rightModal', ['show_rightModal']),
+    ...mapStateVModel('pageData', ['wpSections', 'clicked_section', 'clicked_row', 'clicked_column']),
   },
   methods: {
     async addElement(data) {
-      // await this.wpSections[0].list[0].element.push(data)
-      // this.show_rightModal = await false
-      await alert(this.wpSections[0].list[0].element.push(data))
+      await this.wpSections[this.clicked_section].row_list[this.clicked_row][this.clicked_column].element_list.push(data)
+      this.show_rightModal = await false
     }
   },
   components: {},

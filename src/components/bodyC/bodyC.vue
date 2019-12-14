@@ -2,21 +2,23 @@
   <div class="w-full flex flex-col items-center overflow-y-scroll">
     <!-- body section -->
     <div class="w-full flex flex-col justify-center items-center">
-      <cmn-add-new-btn class="mt-30px mb-30px"
-        @click.native="addRow" :btn_data="btn_data"></cmn-add-new-btn>
-      <!-- <pre>{{wpSections}}</pre> -->
+      <!-- Cmn_addNewBtn.vue -->
+      <div class="w-full flex justify-center border-2px hover:border-green-500 border-opaque"
+        v-if="wpSections[0].row_list.length === 0">
+        <cmn-add-new-btn class="mt-30px mb-30px" @click_cmn_addNewBtn="addRow" :btn_data="btn_data"></cmn-add-new-btn>
+      </div>
 
-      <!-- <div v-for="(section, index) in wpSections" :key="index">
-        {{ section }}
-      </div> -->
-      <!-- <pre>{{ wpSections.map(x => x) }}</pre> -->
-      <!-- <wp-section v-for="(section, index) in wpSections" :key="index" :section_data="section"></wp-section> -->
+      <!-- <h1>Button: {{ this.button_clicked }}</h1>
+      <h1>Option: {{ this.option_clicked }}</h1>
+      <h1>section_clicked: {{this.clicked_section}}</h1>
+      <h1>row_clicked: {{this.clicked_row}}</h1>
+      <h1>element_clicked: {{this.clicked_column}}</h1> -->
+      <!-- <pre>{{wpSections}}</pre> -->
+  
       <div class="w-full"
         v-for="(section, section_index) in wpSections" :key="section_index" :section_data="section">
         <wp-section :section_data="section" :section_index="section_index"></wp-section>
-        <!-- {{section}} -->
       </div>
-      <!-- <wp-section></wp-section> -->
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@
 import {mapStateVModel} from 'map-state-vmodel'
 
 export default {
-  name: 'guideC',
+  name: 'body-c',
   extends: {},
   props: {},
   data(){
@@ -36,7 +38,7 @@ export default {
   watch: {},
   computed: {
     ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked', 'clickOn']),
-    ...mapStateVModel('pageData', ['wpSections']),
+    ...mapStateVModel('pageData', ['wpSections', 'clicked_section', 'clicked_row', 'clicked_column']),
   },
   methods: {
     // data actions
@@ -46,6 +48,9 @@ export default {
       this.show_rightModal = true
       // this.wpSections[0].rows.push({ name: 'row', columns: [] })
     },
+    update_cmn_addNewBtn() {
+      alert('working!!!')
+    }
   },
   components: {},
   created() {},
