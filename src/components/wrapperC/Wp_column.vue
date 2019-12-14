@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full border-2px hover:border-orange-500 border-opaque p-20px">
+  <div class="w-full h-auto border-2px hover:border-orange-500 border-opaque p-20px">
     <cmn-add-new-btn @click_cmn_addNewBtn="addElement" :btn_data="btn_data"></cmn-add-new-btn>
   </div>
 </template>

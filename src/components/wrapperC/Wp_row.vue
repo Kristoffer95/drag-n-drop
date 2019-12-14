@@ -4,7 +4,7 @@
     comlumn is in here already
 -->
 <template>
-  <div class="w-full max-w-1200px flex justify-between items-center"
+  <div class="w-full h-500px max-w-1200px flex justify-between border-2px border-red-500  mb-10px"
     @mouseenter="hoverEnter" @mouseleave="hoverLeave">
     <!-- <h1>This is row</h1> -->
     <!-- <h1>{{row_data}}</h1> -->
@@ -13,7 +13,7 @@
 <!-- hover:border-blue-500 border-opaque  -->
 
     <!-- column -->
-    <div class="w-full h-full p-20px mb-10px"
+    <div class="w-full h-full p-20px"
       :class="[(column_index === 0 ? 'border-2px' : 'border-t-2px border-r-2px border-b-2px'), (hover ? 'border-blue-500' : 'border-opaque')]"
       v-for="(column, column_index) in this.row_data" :key="column_index">
       {{column}}
