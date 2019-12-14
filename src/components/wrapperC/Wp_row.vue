@@ -4,7 +4,7 @@
     comlumn is in here already
 -->
 <template>
-  <div class="w-full h-500px max-w-1200px flex justify-between border-2px border-red-500  mb-10px"
+  <div class="w-full h-500px max-w-1200px flex justify-between mb-10px"
     @mouseenter="hoverEnter" @mouseleave="hoverLeave">
     <!-- <h1>This is row</h1> -->
     <!-- <h1>{{row_data}}</h1> -->
