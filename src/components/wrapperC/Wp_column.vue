@@ -1,11 +1,23 @@
+//wpColumn
+
 <template>
   <div class="w-full h-auto border-2px hover:border-orange-500 border-opaque p-20px">
     <cmn-add-new-btn @click_cmn_addNewBtn="addElement" :btn_data="btn_data"></cmn-add-new-btn>
+    
+    <draggable
+    :list="column_data.element_list"
+    group="element">
+      <div v-for="(data, index) in column_data.element_list" :key="index">
+        {{ data.name }}
+      </div>
+    </draggable>
+    <!-- {{ column_data }} -->
   </div>
 </template>
 
 <script>
 import { mapStateVModel } from 'map-state-vmodel'
+import draggable from "vuedraggable";
 
 export default {
   name: 'wp-column',
@@ -54,7 +66,9 @@ export default {
       this.clicked_column = this.column_index
     },
   },
-  components: {},
+  components: {
+    draggable,
+  },
   created() {},
   beforeCreate(){},
   mounted(){}

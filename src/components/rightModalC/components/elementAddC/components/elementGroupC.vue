@@ -4,20 +4,25 @@
     <div class="w-full mb-10px">
       <span class="text-14px">{{group_data.title | capitalize}}</span>
     </div>
-    <div class="w-full flex flex-wrap justify-between ">
+    <draggable class="w-full flex flex-wrap justify-between"
+    :value="this.group_data.list"
+    :sort="false"
+    :group="{ name: 'element', pull: 'clone', put: false }"
+    >
       <div v-for="(data, index) in group_data.list" :key="index" @click="addElement(data)"
       class="w-118px h-102px border-2px border-lighter-grey flex flex-col justify-center items-center cursor-pointer"
       :class="[( index > 1 ? 'mt-10px' : '')]">
         <i class="text-30px" :class="data.icon"></i>
         <span class="text-12px text-dark-grey">{{ data.name | uppercase}}</span>
       </div>
-    </div>
+    </draggable>
     <!-- {{this.wpSections}} -->
   </div>
 </template>
 
 <script>
 import {mapStateVModel} from 'map-state-vmodel'
+import draggable from "vuedraggable";
 
 export default {
   name: 'element-type-c',
@@ -54,7 +59,9 @@ export default {
       this.show_rightModal = await false
     }
   },
-  components: {},
+  components: {
+    draggable,
+  },
   created() {},
   beforeCreate(){},
   mounted(){}

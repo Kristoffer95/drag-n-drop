@@ -3,11 +3,11 @@
     <!-- body section -->
     <div class="w-full min-h-250px h-full items-center flex flex-col">
       <!-- Cmn_addNewBtn.vue -->
-      <div class="w-full flex border-2px hover:border-green-500 border-opaque"
+      <div class="w-full flex justify-center border-2px hover:border-green-500 border-opaque"
         v-if="wpSections[0].row_list.length === 0">
         <cmn-add-new-btn class="mt-30px mb-30px" @click_cmn_addNewBtn="addRow" :btn_data="btn_data"></cmn-add-new-btn>
       </div>
-
+      <!-- <pre>{{ wpSections }}</pre> -->
       <!-- <h1>Button: {{ this.button_clicked }}</h1>
       <h1>Option: {{ this.option_clicked }}</h1>
       <h1>section_clicked: {{this.clicked_section}}</h1>

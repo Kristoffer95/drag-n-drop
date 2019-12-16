@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex w-screen h-screen relative overflow-x-hidden" :class="{'pointer-events-none' : this.show_rightModal}">
+  <div id="app" class="flex w-screen h-screen relative overflow-x-hidden" >
     <!-- Right div -->
     <div class="bg-red-300 w-70px h-screen flex justify-center py-4">
       <img src="@/assets/images/favicon.png" class="h-6 mt-3" alt="">
@@ -15,7 +15,7 @@
       <!-- <pre>{{wpSections}}</pre> -->
       <body-c></body-c>
     </div>
-    <div class="absolute w-screen h-screen bg-black opacity-25" v-if="this.show_rightModal"></div>
+    <!-- <div class="absolute w-screen h-screen bg-black opacity-25" v-if="this.show_rightModal"></div> -->
     <right-modal-c class="absolute transition-500 transition-ease"></right-modal-c>
   </div> 
 </template>
