@@ -8,7 +8,7 @@
     :list="column_data.element_list"
     group="element">
       <div v-for="(data, index) in column_data.element_list" :key="index">
-        {{ data.name }}
+        {{ data }}
       </div>
     </draggable>
     <!-- {{ column_data }} -->

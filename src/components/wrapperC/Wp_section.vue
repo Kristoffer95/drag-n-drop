@@ -10,8 +10,18 @@
             
       <!-- using the wp-row component -->
       <div class="w-full h-full flex flex-col justify-center items-center">
-        <wp-row v-for="(row_data, row_index) in this.section_data.row_list" :key="row_index"
-        :row_data="row_data" :section_index="section_index" :row_index="row_index"></wp-row>
+        <draggable class="w-full"
+        :list="section_data.row_list"
+        group="row">
+          <div class="flex flex-col justify-center items-center"
+          v-for="(row_data, row_index) in section_data.row_list" :key="row_index">
+            <!-- {{row_data}} -->
+              <wp-row :row_data="row_data" :section_index="section_index" :row_index="row_index"></wp-row>
+          </div>
+        </draggable>
+        <!-- <wp-row v-for="(row_data, row_index) in this.section_data.row_list" :key="row_index"
+        :row_data="row_data" :section_index="section_index" :row_index="row_index"></wp-row> -->
+
       </div>
     </div>
   </div>
@@ -19,6 +29,7 @@
 
 <script>
 import { mapStateVModel } from 'map-state-vmodel'
+import draggable from "vuedraggable";
 
 export default {
   name: 'wp-section',
@@ -70,6 +81,9 @@ export default {
       this.show_rightModal = await true
       // this.wpSection[0].columns.push({ name: 'element' })
     }
+  },
+  components: {
+    draggable,
   }
 }
 </script>

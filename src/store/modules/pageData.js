@@ -10,22 +10,22 @@ const state = {
   //   }
   // ],
   wpSections: [
-  {
-    "name": "section",
-    "row_list": [
-      [
-        {
-          "name": "column",
-          "element_list": []
-        },
-        {
-          "name": "column",
-          "element_list": []
-        }
+    {
+      "name": "section",
+      "row_list": [
+        [
+          {
+            "name": "column",
+            "element_list": []
+          },
+          {
+            "name": "column",
+            "element_list": []
+          }
+        ]
       ]
-    ]
-  }
-],
+    }
+  ],
 
   // updated when a specific "element" of a "row" in a "section" is clicked.
   clicked_section: 0,
