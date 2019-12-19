@@ -13,7 +13,7 @@
         <draggable class="w-full"
         :list="section_data.row_list"
         group="row">
-          <div class="flex flex-col justify-center items-center"
+          <div class="flex flex-col justify-center items-center "
           v-for="(row_data, row_index) in section_data.row_list" :key="row_index">
             <!-- {{row_data}} -->
               <wp-row :row_data="row_data" :section_index="section_index" :row_index="row_index"></wp-row>

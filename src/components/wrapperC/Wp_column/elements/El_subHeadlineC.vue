@@ -1,14 +1,13 @@
 <template>
   <div>
-    <!-- Code Here -->
+    This is el-sub-headline-c
   </div>
 </template>
 
 <script>
 export default {
-  name: 'guideC',
+  name: 'el-sub-headline-c',
   extends: {},
-  mixins: [],
   props: {},
   data(){
     return{};

@@ -8,15 +8,8 @@
         <cmn-add-new-btn class="mt-30px mb-30px" @click_cmn_addNewBtn="addRow" :btn_data="btn_data"></cmn-add-new-btn>
       </div>
       <!-- <pre>{{ wpSections }}</pre> -->
-      <!-- <h1>Button: {{ this.button_clicked }}</h1>
-      <h1>Option: {{ this.option_clicked }}</h1>
-      <h1>section_clicked: {{this.clicked_section}}</h1>
-      <h1>row_clicked: {{this.clicked_row}}</h1>
-      <h1>element_clicked: {{this.clicked_column}}</h1> -->
-      <!-- <pre>{{wpSections}}</pre> -->
-  
-      <div class="w-full"
-        v-for="(section, section_index) in wpSections" :key="section_index" :section_data="section">
+
+      <div class="w-full" v-for="(section, section_index) in wpSections" :key="section_index" :section_data="section">
         <wp-section :section_data="section" :section_index="section_index"></wp-section>
       </div>
     </div>

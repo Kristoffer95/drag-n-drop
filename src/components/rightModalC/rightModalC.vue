@@ -27,7 +27,7 @@
 
 <script>
 import { mixin as clickaway } from 'vue-clickaway';
-import {mapStateVModel} from 'map-state-vmodel'
+import { mapStateVModel } from 'map-state-vmodel'
 
 // components
 import sectionAddC from './components/sectionAddC'

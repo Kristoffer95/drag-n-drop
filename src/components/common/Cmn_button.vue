@@ -3,7 +3,7 @@
     <i class="text-gray-700 font-medium text-14px" :class="data.icon"></i>
     <span v-if="data.show_name" class="text-14px font-medium ml-2 text-light-grey">{{data.name | capitalize | underscore_to_space }}</span>
     
-    <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hideDropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px">
+    <div v-if="data.list.length > 0 && this.show_dropdown" v-on-clickaway="hideDropdown"  class="absolute h-auto w-160px left-0px top-42px flex flex-col shadow-1 rounded bg-white py-8px z-10">
       <li @click="optionClicked(data.name, inData)" class="list-none py-4px px-24px text-875 font-normal text-light-grey hover:bg-lighter-grey" v-for="(inData, inIndex) in data.list" :key="inIndex">{{inData}}</li>
     </div>
   </div>

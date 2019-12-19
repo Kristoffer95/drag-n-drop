@@ -1,3 +1,0 @@
-* Create index.js here(components) like the idist-components for common componnets
-  > import it to the app.vue for global access
-

@@ -2,7 +2,8 @@
   <div class="w-full h-full flex">
     <!-- left -->
     <div class="w-full p-15px overflow-y-scroll">
-      <input type="text" placeholder="Search" class="w-full h-51px text-15px text-dark-grey px-20px py-15px bg-lighter-blue rounded">
+      <input v-if="this.show_rightModal"
+        type="text" placeholder="Search" class="w-full h-51px text-15px text-dark-grey px-20px py-15px bg-lighter-blue rounded">
       <div class="w-full mt-10px">
         <element-group-c v-for="(data, index) in group" :key="index" :group_data="data"></element-group-c>
       </div>
@@ -20,6 +21,7 @@
 
 <script>
 import elementGroupC from './components/elementGroupC'
+import { mapStateVModel } from 'map-state-vmodel'
 
 export default {
   name: 'element-add-c',
@@ -35,15 +37,17 @@ export default {
   data(){
     return{
       group: [
-        { title: 'text', list:[{ name: 'headline', icon: 'icon-add-section' }, { name: 'sub-headline', icon: 'icon-add-section' }, { name: 'paragraph', icon: 'icon-add-section' }, { name: 'bullet list', icon: 'icon-add-section' }, { name: 'bullet list', icon: 'icon-add-section' }, ]},
-        { title: 'media', list:[{ name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, ]},
+        { title: 'text', list:[{ name: 'headline', icon: 'icon-add-section', value: '' }, { name: 'sub-headline', icon: 'icon-add-section' }, { name: 'paragraph', icon: 'icon-add-section', value: '' }, { name: 'bullet-list', icon: 'icon-add-section', value: ['list 1', 'list 2', 'list 3'] } ]},
+        { title: 'media', list:[{ name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, ]},
         { title: 'form', list:[{ name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, ]},
         { title: 'form 2', list:[{ name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, { name: 'headline', icon: 'icon-add-section' }, ]},
       ]
     };
   },
   watch: {},
-  computed: {},
+  computed: {
+    ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked', 'clickOn']),
+  },
   methods: {},
   components: {
     'element-group-c' : elementGroupC

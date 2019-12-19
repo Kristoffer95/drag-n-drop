@@ -1,0 +1,1 @@
+Update the svg icons of the elements inside rightModal

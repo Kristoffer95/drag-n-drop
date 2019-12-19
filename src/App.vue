@@ -33,8 +33,9 @@ import rightModalC from '@/components/rightModalC/rightModalC'
 // vuex
 import {mapStateVModel} from 'map-state-vmodel'
 
-//row components
-import './components/wrapperC'   
+// Global Components
+import './components/wrapperC' // Wrapper components ['section', 'row', 'column']
+import './components/common' // Common components  
 
 export default {
   name: 'sample',

@@ -5,7 +5,6 @@ import store from './store'
 import './registerServiceWorker'
 
 // import 
-import './components/common' // common components
 import lodash from 'lodash'; window._ = lodash;
 
 // css

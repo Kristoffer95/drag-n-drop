@@ -4,11 +4,14 @@
   <div class="w-full h-auto border-2px hover:border-orange-500 border-opaque p-20px">
     <cmn-add-new-btn @click_cmn_addNewBtn="addElement" :btn_data="btn_data"></cmn-add-new-btn>
     
-    <draggable
+    <draggable class=""
     :list="column_data.element_list"
     group="element">
       <div v-for="(data, index) in column_data.element_list" :key="index">
-        {{ data }}
+        <!-- {{ data }} -->
+        <!-- <el-headline-c></el-headline-c> -->
+        <component class="border hover:border-red-500 border-opaque"
+          :is="`el-${data.name}-c`" :data_value="data" :data_index="index"></component>
       </div>
     </draggable>
     <!-- {{ column_data }} -->
@@ -18,6 +21,9 @@
 <script>
 import { mapStateVModel } from 'map-state-vmodel'
 import draggable from "vuedraggable";
+
+// column elements
+import './Wp_column/elements' 
 
 export default {
   name: 'wp-column',
