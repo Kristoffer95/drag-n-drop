@@ -14,8 +14,10 @@
         </div>
       </li>
     </ul>
+      <!-- ref="newInput"  -->
     <input class=""
-      v-if="add_list" ref="newInput" v-on-clickaway="addNewList"
+      v-if="add_list" 
+      v-on-clickaway="addNewList"
       type="text" v-model="new_list" placeholder="Add list here..." @keyup.enter="addNewList">
     <span class="text-blue-500 cursor-pointer" @click="updateAddList"
       v-if="!add_list" >Add new list</span>
@@ -62,15 +64,15 @@ export default {
       if(this.new_list !== '') await this.data_value.value.push(this.new_list)
       if (!event.key) await this.updateAddList();
       this.new_list = await ''
-      if (this.add_list) await this.ref_newInputAutoFocus()
+      // if (this.add_list) await this.ref_newInputAutoFocus()
     },
     async updateAddList() {
       this.add_list = await !this.add_list
     },
-    async ref_newInputAutoFocus() {
-      this.$refs.newInput[0].autofocus = await true;
-      // await console.log(this.$refs);
-    }
+    // async ref_newInputAutoFocus() {
+    //   this.$refs.newInput[0].autofocus = await true;
+    //   // await console.log(this.$refs);
+    // }
   },
   components: {},
   created() {},
