@@ -1,9 +1,12 @@
 <template>
   <div class="w-full flex flex-col items-center">
+    {{data_value}}
     <textarea cols="15" rows="1" type="text" v-if="show_input"
       class="w-full text-35px font-semibold" v-model="headline_value" v-on-clickaway="save"></textarea>
     <h1 class="text-35px font-semibold" v-else
       @click="updateShowInfo">{{ headline_value.length === 0 ? 'Enter Headline here' : headline_value }}</h1>
+  <slot name="delete_icon"></slot>
+
   </div>
 </template>
 
@@ -27,7 +30,7 @@ export default {
   data(){
     return{
       show_input: false,
-      headline_value: 'Headline'
+      headline_value: this.data_value.value
     };
   },
   filters: {},

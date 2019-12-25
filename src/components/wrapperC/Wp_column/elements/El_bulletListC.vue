@@ -1,30 +1,37 @@
 <template>
   <div class="w-full h-full">
-    <!-- <span>{{data_value}}</span> -->
+    <h1>{{ this.section_index }}</h1>
+    <h1>{{ this.row_index }}</h1>
+    <h1>{{ this.column_index }}</h1>
 
-    <ul>
-      <li class="cursor-pointer flex flex-row items-center"
-        v-for="(data, index) in data_value.value" :key="index">
-        <span class="w-6px h-6px bg-black rounded mr-5px"></span>
-        <div class="flex flex-col">
-          <input type="text" v-if="show_input && list_index === index"
-            v-model="data_value.value[index]" v-on-clickaway="save">
-          <span v-else
-            @click="updateShowInput(index)">{{ data }}</span>
+    <h1>{{this.checkCheck}}</h1>
+    {{this.list_data}}
+
+    <div v-for="(data, index) in this.list_data" :key="index">
+      <div class="flex flex-row">
+        <input v-if="edit_list && edit_list_index === index" type="text" placeholder="Enter here..." 
+          v-model="list_data[index]"
+          @keyup.enter="save_editList">
+            <!-- v-model="list_data[index]" -->
+        <span v-else @click="update_editList(index)">{{data}}</span>
+        
+        <div class="">
+          <i class="icon-trash cursor-pointer ml-10px" ></i>
+          <button class="text-red-500 font-semibold ml-10px"
+            @click="edit_list = false; edit_list_index === null">Cancel</button>
         </div>
-      </li>
-    </ul>
-      <!-- ref="newInput"  -->
-    <input class=""
-      v-if="add_list" 
-      v-on-clickaway="addNewList"
-      type="text" v-model="new_list" placeholder="Add list here..." @keyup.enter="addNewList">
-    <span class="text-blue-500 cursor-pointer" @click="updateAddList"
-      v-if="!add_list" >Add new list</span>
+      </div>
+    </div>
+    <div>
+      <input type="text">
+      <button>Add List</button>
+    </div>
+    <slot name="delete_icon"></slot>
   </div>
-</template>
+</template> 
 
 <script>
+import { mapStateVModel } from 'map-state-vmodel'
 import { mixin as clickaway } from 'vue-clickaway';
 
 export default {
@@ -39,40 +46,60 @@ export default {
     data_index: {
       type: Number,
       required: true
+    },
+    section_index: {
+      type: Number,
+      required: true
+    },
+    row_index: {
+      type: Number,
+      required: true
+    },
+    column_index: {
+      type: Number,
+      required: true
     }
   },
   data(){
     return{
-      show_input: false,
-      list_index: null,
+      edit_list: false,
+      edit_list_index: null,
       add_list: false,
-      new_list: ''
+      add_list_data: '',
+      list_data: ['list 1', 'list 2', 'list 3']
     };
   },
   filters: {},
   watch: {},
-  computed: {},
+  computed: {
+    ...mapStateVModel('pageData', ['wpSections', 'clicked_section', 'clicked_row', 'clicked_column']),
+    checkCheck() {
+      if (this.clicked_section === this.section_index && this.clicked_row === this.row_index && this.clicked_column === this.column_index) {
+        return true
+      } else {
+        return false
+      }
+    }
+  },
   methods: {
-    async updateShowInput(index) {
-      this.list_index = await index
-      await this.save()
+    async update_editList(index){
+      await this.update_clickedElementDetail()
+      this.edit_list_index = await index
+      this.edit_list = await true
     },
-    save() {
-      this.show_input = !this.show_input
+    save_editList() {
+      // alert(this.checkCheck)
+      // if(this.checkCheck) {
+        this.wpSections[this.section_index].row_list[this.row_index][this.column_index].element_list[this.data_index].value = this.list_data
+      // }
     },
-    async addNewList(event) {
-      if(this.new_list !== '') await this.data_value.value.push(this.new_list)
-      if (!event.key) await this.updateAddList();
-      this.new_list = await ''
-      // if (this.add_list) await this.ref_newInputAutoFocus()
-    },
-    async updateAddList() {
-      this.add_list = await !this.add_list
-    },
-    // async ref_newInputAutoFocus() {
-    //   this.$refs.newInput[0].autofocus = await true;
-    //   // await console.log(this.$refs);
-    // }
+
+    // 
+    update_clickedElementDetail() { // pageData.js
+      this.clicked_section = this.section_index
+      this.clicked_row = this.row_index
+      this.clicked_column = this.column_index
+    }
   },
   components: {},
   created() {},

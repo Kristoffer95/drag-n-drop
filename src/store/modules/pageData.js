@@ -11,16 +11,36 @@ const state = {
   ],
   // wpSections: [
   //   {
-  //     "name": "section",
-  //     "row_list": [
+  //     name: "section",
+  //     row_list: [
   //       [
   //         {
-  //           "name": "column",
-  //           "element_list": []
+  //           name: "column",
+  //           element_list: [
+  //             {
+  //               name: "bullet-list",
+  //               icon: "icon-add-section",
+  //               value: [
+  //                 "list 1",
+  //                 "list 2",
+  //                 "list 3"
+  //               ]
+  //             }
+  //           ]
   //         },
   //         {
-  //           "name": "column",
-  //           "element_list": []
+  //           name: "column",
+  //           element_list: [
+  //             {
+  //               name: "bullet-list",
+  //               icon: "icon-add-section",
+  //               value: [
+  //                 "list 1",
+  //                 "list 2",
+  //                 "list 3"
+  //               ]
+  //             }
+  //           ]
   //         }
   //       ]
   //     ]

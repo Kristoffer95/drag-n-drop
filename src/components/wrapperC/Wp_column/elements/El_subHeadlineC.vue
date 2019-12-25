@@ -1,6 +1,7 @@
 <template>
   <div>
     This is el-sub-headline-c
+    <slot name="delete_icon"></slot>
   </div>
 </template>
 
