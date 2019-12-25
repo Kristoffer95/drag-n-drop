@@ -5,7 +5,8 @@
     <h1>{{ this.column_index }}</h1>
 
     <h1>{{this.checkCheck}}</h1>
-    {{this.list_data}}
+    <!-- {{this.list_data}} -->
+    {{data_value}}
 
     <div v-for="(data, index) in this.list_data" :key="index">
       <div class="flex flex-row">
@@ -14,11 +15,12 @@
           @keyup.enter="save_editList">
             <!-- v-model="list_data[index]" -->
         <span v-else @click="update_editList(index)">{{data}}</span>
-        
+
         <div class="">
           <i class="icon-trash cursor-pointer ml-10px" ></i>
           <button class="text-red-500 font-semibold ml-10px"
             @click="edit_list = false; edit_list_index === null">Cancel</button>
+          <button class="text-blue-500 font-semibold ml-10px" @click="save_editList">save</button>
         </div>
       </div>
     </div>
@@ -70,7 +72,9 @@ export default {
     };
   },
   filters: {},
-  watch: {},
+  watch: {
+    wpSections() {}
+  },
   computed: {
     ...mapStateVModel('pageData', ['wpSections', 'clicked_section', 'clicked_row', 'clicked_column']),
     checkCheck() {
@@ -90,12 +94,12 @@ export default {
     save_editList() {
       // alert(this.checkCheck)
       // if(this.checkCheck) {
-        this.wpSections[this.section_index].row_list[this.row_index][this.column_index].element_list[this.data_index].value = this.list_data
+        this.data_value.value = this.list_data
+        // this.wpSections[this.section_index].row_list[this.row_index][this.column_index].element_list[this.data_index].value = this.list_data
       // }
     },
-
-    // 
-    update_clickedElementDetail() { // pageData.js
+    // pageData.js
+    update_clickedElementDetail() {
       this.clicked_section = this.section_index
       this.clicked_row = this.row_index
       this.clicked_column = this.column_index

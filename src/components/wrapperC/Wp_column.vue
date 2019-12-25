@@ -82,7 +82,7 @@ export default {
     },
     deleteElement(index) {
       // this.wpSections[this.section_index].row_list[this.row_index][0].element_list.splice(index, 1)
-      this.wpSections[this.section_index].row_list[0][this.column_index].element_list.splice(index, 1)
+      this.wpSections[this.section_index].row_list[this.row_index][this.column_index].element_list.splice(index, 1)
       // console.log(this.wpSections[this.section_index].row_list[0][this.column_index].element_list.splice(index, 1));
       
       // alert(this.column_index)

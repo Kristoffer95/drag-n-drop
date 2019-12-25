@@ -62,7 +62,7 @@ const actions = {};
 
 // mutations
 const mutations = {
-  ...createSetters(state)
+  ...createSetters(state),
 };
 
 export default {
