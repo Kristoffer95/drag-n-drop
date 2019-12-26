@@ -1,10 +1,8 @@
-//wpColumn
-
 <template>
   <div class="w-full h-auto border-2px hover:border-orange-500 border-opaque p-20px"
     @mouseenter="hover = true" @mouseleave="hover = false">
-    
-
+    <h1>COLUMN DATA:</h1>
+    <pre>{{column_data}}</pre>
 
     <cmn-add-new-btn @click_cmn_addNewBtn="addElement" :btn_data="btn_data"></cmn-add-new-btn>
     <draggable class=""

@@ -18,13 +18,9 @@ const state = {
   //           name: "column",
   //           element_list: [
   //             {
-  //               name: "bullet-list",
+  //               name: "headline",
   //               icon: "icon-add-section",
-  //               value: [
-  //                 "list 1",
-  //                 "list 2",
-  //                 "list 3"
-  //               ]
+  //               value: ""
   //             }
   //           ]
   //         },
@@ -32,13 +28,9 @@ const state = {
   //           name: "column",
   //           element_list: [
   //             {
-  //               name: "bullet-list",
+  //               name: "headline",
   //               icon: "icon-add-section",
-  //               value: [
-  //                 "list 1",
-  //                 "list 2",
-  //                 "list 3"
-  //               ]
+  //               value: ""
   //             }
   //           ]
   //         }
