@@ -9,35 +9,48 @@ const state = {
       row_list: []
     }
   ],
-  // wpSections: [
-  //   {
-  //     name: "section",
-  //     row_list: [
-  //       [
-  //         {
-  //           name: "column",
-  //           element_list: [
-  //             {
-  //               name: "headline",
-  //               icon: "icon-add-section",
-  //               value: ""
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           name: "column",
-  //           element_list: [
-  //             {
-  //               name: "headline",
-  //               icon: "icon-add-section",
-  //               value: ""
-  //             }
-  //           ]
-  //         }
+  // wpSections:[
+  //     {
+  //       "name": "section",
+  //       "row_list": [
+  //         [
+  //           {
+  //             "title": "2 column",
+  //             "list": [
+  //               {
+  //                 "name": "column",
+  //                 "element_list": []
+  //               },
+  //               {
+  //                 "name": "column",
+  //                 "element_list": []
+  //               }
+  //             ]
+  //           }
+  //         ]
   //       ]
-  //     ]
-  //   }
-  // ],
+  //     },
+  //     {
+  //       "name": "section",
+  //       "row_list": [
+  //         [
+  //           {
+  //             "title": "2 column",
+  //             "list": [
+  //               {
+  //                 "name": "column",
+  //                 "element_list": []
+  //               },
+  //               {
+  //                 "name": "column",
+  //                 "element_list": []
+  //               }
+  //             ]
+  //           }
+  //         ]
+  //       ]
+  //     }
+  //   ],
 
   // updated when a specific "element" of a "row" in a "section" is clicked.
   clicked_section: 0,

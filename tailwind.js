@@ -81,6 +81,8 @@ module.exports = {
     inset: { // top, right, buttom, left
       '0': '0',
       '0px': '0px',
+
+      // positive
       '1px': '1px',
       '2px': '2px',
       '3px': '3px',
@@ -97,8 +99,10 @@ module.exports = {
       'n50px': '-50px',
       '383px' : '383px',
       'n433px' : '-433px',
-      '50px': '50px',
       '80px': '80px',
+
+      // negative
+      'n23px' : '-23px',
     },
     boxShadow: {
       '1': '0 8px 16px 5px rgba(0,0,0,0.1)',

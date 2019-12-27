@@ -1,11 +1,12 @@
 <template>
   <div class="w-full pt-30px">
+    <!-- <pre>{{this.merge_columns}}</pre> -->
     <draggable class="w-full flex flex-wrap justify-center"
-    :value="drag_drop"
+    :value="list_title"
     :sort="false"
-    :group="{ name: 'row', pull: 'clone', put: false }"
+    :group="{ name: 'drag_drop-row', pull: 'clone', put: false }"
     >
-      <div v-for="(data, index) in col_count" :key="index" class="w-155px h-102px border-2px border-lighter-grey rounded cursor-pointer" 
+      <div v-for="(data, index) in list_title" :key="index" class="w-155px h-102px border-2px border-lighter-grey rounded cursor-pointer" 
         :class="[(index % 2 == 0 ? 'mr-10px' : ''), (index > 1 ? 'mt-10px' : '')]"
         @click="addRow(data[0])">
         <div class="w-full h-full flex flex-col sjustify-center items-center">
@@ -15,6 +16,7 @@
         </div>
       </div>
     </draggable>
+    <!-- <pre>{{drag_drop}}</pre> -->
   </div>
 </template>
 
@@ -34,8 +36,7 @@ export default {
     },
   },
   data(){
-    return{
-      drag_drop: [
+    const drag_drop = [
         [{ name: 'column', element_list: [] }],
         [{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }],
         [{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }],
@@ -44,33 +45,34 @@ export default {
         [{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }],
         [],
         [],
-      ],
-      col_count: [
-        [{ title: '1 column', list:[{ name: 'column', element_list: [] }] }],
-        [{ title: '2 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }] }],
-        [{ title: '3 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] }],
-        [{ title: '4 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] }],
-        [{ title: '5 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] }],
-        [{ title: '6 column', list:[{ name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }, { name: 'column', element_list: [] }] }],
+      ];
+    
+    let col_count = [
+        [{ title: '1 column', list: drag_drop[0] }],
+        [{ title: '2 column', list: drag_drop[1] }],
+        [{ title: '3 column', list: drag_drop[2] }],
+        [{ title: '4 column', list: drag_drop[3] }],
+        [{ title: '5 column', list: drag_drop[4] }],
+        [{ title: '6 column', list: drag_drop[5] }],
         [{ title: 'left sidebar' }],
         [{ title: 'right sidebar' }],
       ]
+
+    return{
+      list_data: drag_drop,
+      list_title: col_count
+      
     };
   },
   watch: {},
   computed: {
-    ...mapStateVModel('pageData', ['wpSections']),
+    ...mapStateVModel('pageData', ['wpSections', 'clicked_section']),
     ...mapStateVModel('rightModal', ['show_rightModal', 'button_clicked', 'option_clicked', 'clickOn']),
 
   },
   methods: {
     addRow(data) {
-      // if(this.wpSections.length === 1) {
-        this.wpSections[0].row_list.push(data.list)
-      // }else{
-        // this.wpSections.push(data)
-        // alert(this.wpSections.length)
-      // }
+      this.wpSections[this.clicked_section].row_list.push(data.list)
       this.show_rightModal = false
     }
   },

@@ -1,15 +1,9 @@
 <template>
-  <div class="w-full flex flex-col items-center">
-    <h1>{{data_value.value}}</h1>
-    <h1>{{data_index}}</h1>
-    <!-- {{this.wpSections}} -->
-    <!-- {{this.wpSections[0].row_list[0][0].element_list.value}} -->
-    <textarea cols="15" rows="1" type="text" v-if="show_input"
-      class="w-full text-35px font-semibold" :value="data_value.value" @input="headline_value = $event.target.value" v-on-clickaway="save"></textarea>
-      <!-- v-model="headline_value" -->
+  <div class="w-full flex flex-col items-center" v-on-clickaway="save" >
+    <textarea cols="15" rows="3" type="text" v-if="show_input"
+      class="w-full text-35px font-semibold" :value="data_value.value || headline_value" @input="headline_value = $event.target.value" ></textarea>
     <h1 class="text-35px font-semibold" v-else
       @click="updateShowInfo">{{ data_value.value.length === 0 ? 'Enter Headline here' : data_value.value }}</h1>
-    <!-- <button @click="try_save">save</button> -->
     <slot name="delete_icon"></slot>
   </div>
 </template>

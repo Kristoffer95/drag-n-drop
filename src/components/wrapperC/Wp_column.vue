@@ -1,15 +1,13 @@
 <template>
   <div class="w-full h-auto border-2px hover:border-orange-500 border-opaque p-20px"
     @mouseenter="hover = true" @mouseleave="hover = false">
-    <h1>COLUMN DATA:</h1>
-    <pre>{{column_data}}</pre>
 
     <cmn-add-new-btn @click_cmn_addNewBtn="addElement" :btn_data="btn_data"></cmn-add-new-btn>
     <draggable class=""
     :list="column_data.element_list"
     group="element">
       <div v-for="(data, index) in column_data.element_list" :key="index">
-
+        <!-- element components -->
         <component class="relative border hover:border-red-500 border-opaque"
           @mouseenter.native="element_hover = true" @mouseleave.native="element_hover = false"
           :is="`el-${data.name}-c`" :data_value="data" :data_index="index" :section_index="section_index" :row_index="row_index" :column_index="column_index">
