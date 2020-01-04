@@ -8,7 +8,7 @@
         <cmn-add-new-btn class="mt-30px mb-30px" @click_cmn_addNewBtn="addRow" :btn_data="btn_data"></cmn-add-new-btn>
       </div> -->
 
-      <!-- <pre>{{this.wpSections}}</pre> -->
+      <pre>{{this.wpSections}}</pre>
 
       <div class="w-full" v-for="(section, section_index) in wpSections" :key="section_index" :section_data="section">
         <wp-section :section_data="section" :section_index="section_index"></wp-section>
